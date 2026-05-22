@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Перевірка коду (Checkout)
+    - name: Отримання коду (Checkout)
       uses: actions/checkout@v3
 
     - name: Налаштування Python
@@ -26,7 +26,8 @@ jobs:
 
     - name: Запуск тестів
       env:
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        DEBUG: True
+        # Фіктивний ключ для успішного проходження CI тестів
+        SECRET_KEY: "test-secret-key-for-github-actions"
+        DEBUG: "True"
       run: |
         python manage.py test
